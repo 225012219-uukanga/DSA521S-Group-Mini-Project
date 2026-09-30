@@ -1,0 +1,63 @@
+Pseudocode for all required operations, corresponding directly to the 
+submitted Java implementation:
+Queue
+PROCEDURE enqueue(student)
+    newNode <- create Node(student)
+    IF rear IS NULL THEN
+        front <- newNode
+        rear <- newNode
+    ELSE
+        rear.next <- newNode
+        rear <- newNode
+    END IF
+    size <- size + 1
+END PROCEDURE
+PROCEDURE dequeue()
+    IF front IS NULL THEN
+        PRINT "Queue is empty"
+        RETURN NULL
+    END IF
+    served <- front
+    front <- front.next
+    IF front IS NULL THEN
+        rear <- NULL
+    END IF
+    size <- size - 1
+    RETURN served
+END PROCEDURE
+Stack (used for push, pop, and postfix evaluation)
+PROCEDURE push(value)
+    IF top = capacity - 1 THEN
+        PRINT "Stack overflow"
+    ELSE
+        top
+ <- top + 1
+        items[top] <- value
+    END IF
+END PROCEDURE
+PROCEDURE pop()
+    IF top = -1 THEN
+        PRINT "Stack underflow"
+    ELSE
+        value <- items[top]
+        top
+ <- top - 1
+        RETURN value
+    END IF
+END PROCEDURE
+PROCEDURE evaluatePostfix(expression)
+    FOR EACH token IN expression
+        IF 
+token IS a number THEN
+ push(token)
+        ELSE  // token is an operator
+ b <- pop()
+ a <- pop()
+ result <- applyOperator(a, b, token)
+ push(result)
+        END
+    END FOR
+ IF
+    RETURN pop()   // final answer is the only value left on the 
+stack
+END PROCEDURE
